@@ -1,0 +1,33 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent()}} Ajout Article{% endblock %}
+{% block body %}
+
+ <div class="container-fluid">
+ <div class="row justify-content-center p4" style="padding-top:3%"><br><br>
+ <h1 class="text-center"> Ajouter un article</h1>
+ </div>
+ <div class="row justify-content-center">
+ <div class="col-12 bg-white p-4 m-0">
+ {{ form_start(form) }}
+<div class="form-group">
+ {{ form_label(form.title, 'Titre de l article (*) ', {'label_attr': {'class': 'font-weightbold'}}) }}
+ {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+ </div>
+ <div class="form-group">
+ {{ form_label(form.contents, 'Contenu de l article (*) ', {'label_attr': {'class': 'font-weightbold'}}) }}
+ {{ form_widget(form.contents, {'attr': {'class': 'form-control'}}) }}
+ </div>
+  <div class="form-group">
+ {{ form_label(form.userId, 'Id de l utilisateur (*) ', {'label_attr': {'class': 'font-weightbold'}}) }}
+ {{ form_widget(form.userId, {'attr': {'class': 'form-control'}}) }}
+ </div>
+ <div class="form-group mx-auto text-center">
+ {{ form_widget(form.ajouter, { 'label': "Ajouter", 'attr': {'class': 'btn btn-primary mx-auto text-center'}}) }}
+ </div>
+ {{ form_end(form) }}
+ </div>
+ </div>
+</div>
+{% endblock %}
