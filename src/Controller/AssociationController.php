@@ -7,16 +7,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LiaisonController extends AbstractController
+class AssociationController extends AbstractController
 {
     /**
-     * @Route("/liaison", name="liaison")
+     * @Route("/association", name="association")
      */
     public function index(UserRepository $userRepository): Response
     {
+        return $this->render('association/index.html.twig', [
+            'godFathers' => $userRepository->findAllUserThanRole('ROLE_GODFATHER'),
+            'beneficiarys' => $userRepository->findAllUserThanRole('ROLE_BENEFICIARY'),
 
-        return $this->render('liaison/index.html.twig', [
-            'users' => $userRepository->findAll(),
         ]);
     }
 }
