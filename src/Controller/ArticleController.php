@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ArticleController extends AbstractController
 {
-/**
+    /**
      * @Route("/article", name="article")
      */
     public function index(Request $request): Response
@@ -30,6 +30,30 @@ class ArticleController extends AbstractController
         } 
         return $this->render('article/index.html.twig', [
         'form'=>$form->createView()
+        ]);
+    }
+        /**
+    * @Route("/liste_articles", name="liste_articles")
+    */
+    public function listeArticles(Request $request)
+    {
+        $em = $this->getDoctrine();
+        $repoArticle = $em->getRepository(Article::class);
+
+        if ($request->get('supp')!=null){
+            $article = $repoArticle->find($request->get('supp'));
+            if($article!=null){
+                $em->getManager()->remove($article);
+                $em->getManager()->flush();
+            }
+            return $this->redirectToRoute('liste_articles');
+        }
+           
+
+        $articles = $repoArticle->findBy(array(),array('title'=>'ASC'));
+        
+        return $this->render('article/liste_articles.html.twig', [
+        'articles'=>$articles 
         ]);
     }
 }
