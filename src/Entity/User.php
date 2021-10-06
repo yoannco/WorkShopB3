@@ -49,6 +49,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $documents;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $formation;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -200,6 +205,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $document->setUserId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFormation(): ?string
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(?string $formation): self
+    {
+        $this->formation = $formation;
 
         return $this;
     }
