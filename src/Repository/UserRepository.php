@@ -36,6 +36,24 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
+    public function findAllUserThanRole(string $role): array
+    {
+        // automatically knows to select Products
+        // the "p" is an alias you'll use in the rest of the query
+
+
+        return $this->createQueryBuilder('User')
+            ->andWhere("User.roles like :role")
+            ->setParameter('role', '%' . $role .'%')
+            ->orderBy('User.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        // to get just one result:
+        // $product = $query->setMaxResults(1)->getOneOrNullResult();
+    }
+
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
