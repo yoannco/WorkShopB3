@@ -1,33 +1,37 @@
-
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent()}} Ajout Article{% endblock %}
-{% block body %}
+{% block title %}Article index{% endblock %}
 
- <div class="container-fluid">
- <div class="row justify-content-center p4" style="padding-top:3%"><br><br>
- <h1 class="text-center"> Ajouter un article</h1>
- </div>
- <div class="row justify-content-center">
- <div class="col-12 bg-white p-4 m-0">
- {{ form_start(form) }}
-<div class="form-group">
- {{ form_label(form.title, 'Titre de l article (*) ', {'label_attr': {'class': 'font-weightbold'}}) }}
- {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
- </div>
- <div class="form-group">
- {{ form_label(form.contents, 'Contenu de l article (*) ', {'label_attr': {'class': 'font-weightbold'}}) }}
- {{ form_widget(form.contents, {'attr': {'class': 'form-control'}}) }}
- </div>
-  <div class="form-group">
- {{ form_label(form.userId, 'Id de l utilisateur (*) ', {'label_attr': {'class': 'font-weightbold'}}) }}
- {{ form_widget(form.userId, {'attr': {'class': 'form-control'}}) }}
- </div>
- <div class="form-group mx-auto text-center">
- {{ form_widget(form.ajouter, { 'label': "Ajouter", 'attr': {'class': 'btn btn-primary mx-auto text-center'}}) }}
- </div>
- {{ form_end(form) }}
- </div>
- </div>
-</div>
+{% block body %}
+    <h1>Article index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Contents</th>
+                <th>Title</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.contents }}</td>
+                <td>{{ article.title }}</td>
+                <td>
+                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('article_new') }}">Create new</a>
 {% endblock %}
