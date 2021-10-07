@@ -33,20 +33,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="article">Articles</a>
+                    <a class="nav-link" href="{{ path('article_index') }}">Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="documents">Documents</a>
+                    <a class="nav-link" href="{{ path('document_index') }}">Documents</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact">Contact</a>
+                    <a class="nav-link" href="{{ path('contact_new') }}">Contact</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-{% block carousel %}
+{% block banniere %}
 {% endblock %}
 
 {% block citation %}
