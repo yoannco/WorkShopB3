@@ -16,8 +16,21 @@ class AssociationController extends AbstractController
     {
         return $this->render('association/index.html.twig', [
             'godFathers' => $userRepository->findAllUserThanRole('ROLE_GODFATHER'),
-            'beneficiarys' => $userRepository->findAllUserThanRole('ROLE_BENEFICIARY'),
+            'beneficiaries' => $userRepository->findAllUserThanRole('ROLE_BENEFICIARY'),
 
+        ]);
+    }
+
+    /**
+     * @Route("/creatassociation/{id1}/{id2}", name="creat_association")
+     */
+    public function associationCreation(UserRepository $userRepository): Response
+    {
+
+
+        return $this->render('association/index.html.twig', [
+            'godFathers' => $userRepository->findAllUserThanRole('ROLE_GODFATHER'),
+            'beneficiaries' => $userRepository->findAllUserThanRole('ROLE_BENEFICIARY'),
         ]);
     }
 }
