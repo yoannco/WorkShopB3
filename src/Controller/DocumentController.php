@@ -54,11 +54,11 @@ class DocumentController extends AbstractController
             $form->handleRequest($request); 
             // $document->setEtatDocument(0);
             if ($form->isSubmitted() && $form->isValid()) {
-
-                    $file = $document->getLink();
+                    $file = $form->get('link')->getData();
+                    // $file = $document->getLink();
                     $link = md5(uniqid()).'.'.$file->guessExtension();
                     $file->move(
-                    $this->getParameter('upload_document'),$link);
+                    $this->getParameter(),$link);
                     $document->setLink($link);
 
                 $em = $this->getDoctrine()->getManager();
@@ -66,7 +66,11 @@ class DocumentController extends AbstractController
                 $em->flush();
                 $this->addFlash('notice', 'Document inséré');
             }
-            return $this->redirectToRoute('document');
+            // return $this->redirectToRoute('document/new');
+            return $this->renderForm('document/new.html.twig', [
+                     'document' => $document,
+                     'form' => $form,
+                 ]);
         } 
         return $this->render('document/new.html.twig', [
         'form'=>$form->createView()
