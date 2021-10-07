@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AssociationController!{% endblock %}
+ {% block banniere %}
+
+     <img src="/assets/img/BannerAdminDemandes.png" class="img-fluid" alt="Responsive image">
+
+ {% endblock %}
+{% block body %}
+
+
+    <h1>Attribution parrain</h1>
+
+<form method="post" action="{{ path('create_association') }}" onsubmit="return confirm('Le parrain va être attribué !');">
+
+
+    <div>
+        <h2>Parrains</h2>
+        <table class="table  ">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Formation</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for godFather in godFathers %}
+                <tr>
+                    <td>{{ godFather.name }} {{ godFather.firstName }}</td>
+                    {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
+                    <td>{{ godFather.formation }}</td>
+                    <td>
+                        <input class="form-check-input" type="radio" name="flexRadioGodFather" id="flexRadio{{ godFather.id }}" value="{{ godFather.id }}">
+                        <label class="form-check-label" for="flexRadio{{ godFather.id }}"></label>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h2>Bénéficiaires</h2>
+        <table class="table  ">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Formation</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for beneficiary in beneficiaries %}
+                <tr>
+                    <td>{{ beneficiary.name }} {{ beneficiary.firstName }}</td>
+                    {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
+                    <td>{{ beneficiary.formation }}</td>
+                    <td>
+
+                        <input class="form-check-input" type="radio" name="flexRadioBeneficiary" id="{{ beneficiary.id }}" value="{{ beneficiary.id }}" >
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-dark">Attribution</button>
+</form>
+{% endblock %}

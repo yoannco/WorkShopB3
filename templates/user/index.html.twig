@@ -2,13 +2,17 @@
 
 {% block title %}Mon Compte{% endblock %}
 
+     <img src="/assets/img/BannerAdminDemandes.png" class="img-fluid" alt="Responsive image">
+
+ {% endblock %}
 {% block body %}
-    <h1>User index</h1>
+
+    <h1>Liste utilisateurs</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+
                 <th>Email</th>
                 <th>Roles</th>
                 <th>Password</th>
@@ -19,11 +23,14 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
+
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.password }}</td>
                 <td>{{ user.formation }}</td>
+                <td>
+                    {{ user.binome }}
+                </td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>

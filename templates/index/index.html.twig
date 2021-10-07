@@ -1,73 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HandiStanciel
-{% endblock %}
+{% block title %}HandiStanciel{% endblock %}
 
 {% block banniere %}
 
-	<img src="assets/img/BannerAccueil.png" class="img-fluid" alt="Responsive image">
+    <img src="/assets/img/BannerAccueil.png" class="img-fluid" alt="Responsive image">
 
 {% endblock %}
 
 {% block citation %}
-	<figure class="text-center">
-		<blockquote class="blockquote">
-			<p class="mb-0 mt-3">HandiStanciel l'accompagnement en milieu professionnel</p>
+    <figure class="text-center">
+        <blockquote class="blockquote">
+            <p class="mb-0">HandiStanciel l'accompagnement en milieu professionel</p>
 
-		</blockquote>
-		<figcaption class="blockquote-footer">
-			Retrouvez ici tous nos articles
-			{# <cite title="Source Title">Source Title</cite> #}
-		</figcaption>
-	</figure>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            Someone famous in <cite title="Source Title">Source Title</cite>
+        </figcaption>
+    </figure>
 {% endblock %}
 
-
-{# {% block grandeCard %}{% endblock %} #}
+{% block grandeCard %}
+<div class="card text-center">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Le Distanciel</h5>
+        <p class="card-text">Que faire en cas de probleme pendant une période en distanciel.</p>
+        <a href="#" class="btn btn-primary">Go</a>
+    </div>
+    <div class="card-footer text-muted">
+        2 days ago
+    </div>
+</div>
+    <br>
+{% endblock %}
 
 {% block petiteCard %}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Les aides</h5>
+                <p class="card-text">Mise en place des aides pour personnes handicapés.</p>
+                <a href="#" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
 
-
-	<div class="row">
-		{% for article in articles %}
-
-			{% if loop.first %}
-				<div class="card text-center">
-					<div
-						class="card-header">{# Featured #}
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">{{ article.title }}</h5>
-						<p class="card-text">{{ article.contents }}</p>
-						<a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-primary">En voir plus</a>
-					</div>
-					<div
-						class="card-footer text-muted">{# Il y a deux ans #}
-					</div>
-				</div>
-				<br>
-			{% else %}
-
-
-				<div class="col-6 mt-5">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">{{ article.title }}</h5>
-							<p class="card-text">{{ article.contents }}</p>
-							<a href="{{ path('article_show', {'id': article.id}) }}" class="btn btn-primary">En voir plus</a>
-						</div>
-					</div>
-				</div>
-			{% endif %}
-	{% else %}
-		</div>
-
-		<tr>
-			<td colspan="4">no records found</td>
-		</tr>
-		{# {% endif %} #}
-
-	{% endfor %}
-
-
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Les numéros</h5>
+                <p class="card-text">Présentation des numéros a contacté en cas d'urgence.</p>
+                <a href="#" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
