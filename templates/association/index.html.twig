@@ -6,7 +6,9 @@
 
 
     <h1>Attribution parrain</h1>
+
 <form>
+
 
     <div>
         <h2>Parrains</h2>
@@ -50,6 +52,7 @@
             </tr>
             </thead>
             <tbody>
+
             {% for beneficiary in beneficiaries %}
                 <tr>
                     <td>{{ beneficiary.name }} {{ beneficiary.firstName }}</td>
@@ -70,5 +73,4 @@
     </div>
 
 </form>
-
 {% endblock %}
