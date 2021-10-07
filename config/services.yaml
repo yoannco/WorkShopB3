@@ -7,6 +7,10 @@ parameters:
     images_directory: '%kernel.project_dir%/public/uploads'
     upload_document: '%kernel.project_dir%/public/document'
 
+# download_route:
+#     pattern:  /download/{filename}
+#     defaults: { _controller: YourBundle:Controller:download }
+
 services:
     # default configuration for services in *this* file
     _defaults:
