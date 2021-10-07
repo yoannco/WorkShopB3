@@ -7,7 +7,7 @@
 
     <h1>Attribution parrain</h1>
 
-<form>
+<form method="post" action="{{ path('create_association') }}" onsubmit="return confirm('Le parrain va être attribué !');">
 
 
     <div>
@@ -27,8 +27,8 @@
                     {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
                     <td>{{ godFather.formation }}</td>
                     <td>
-                        <input class="form-check-input" type="radio" name="flexRadioGodFather" id="flexRadioDefault{{ godFather.id }}">
-                        <label class="form-check-label" for="flexRadioDefault{{ godFather.id }}"></label>
+                        <input class="form-check-input" type="radio" name="flexRadioGodFather" id="flexRadio{{ godFather.id }}" value="{{ godFather.id }}">
+                        <label class="form-check-label" for="flexRadio{{ godFather.id }}"></label>
                     </td>
                 </tr>
             {% else %}
@@ -59,8 +59,9 @@
                     {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
                     <td>{{ beneficiary.formation }}</td>
                     <td>
-                        <input class="form-check-input" type="radio" name="flexRadioBeneficiary" id="flexRadioDefault{{ beneficiary.id }}">
-                        <label class="form-check-label" for="flexRadioDefault{{ beneficiary.id }}"></label>
+
+                        <input class="form-check-input" type="radio" name="flexRadioBeneficiary" id="{{ beneficiary.id }}" value="{{ beneficiary.id }}" >
+
                     </td>
                 </tr>
             {% else %}
@@ -71,6 +72,6 @@
             </tbody>
         </table>
     </div>
-
+    <button class="btn">Attribution</button>
 </form>
 {% endblock %}

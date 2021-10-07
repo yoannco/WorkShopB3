@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Type;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -54,6 +55,36 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
 
+
+    public function updateUserById(int $idAssociation, int $idUser ,string $binome)
+    {
+        // automatically knows to select Products
+        // the "p" is an alias you'll use in the rest of the query
+
+
+        $this->createQueryBuilder('user')
+            ->update()
+            ->set("user.binome", '?1')
+            ->andWhere('user.id = :idUser')
+            ->setParameter(1, $binome)
+            ->setParameter('idUser', $idUser)
+            ->getQuery()
+            ->getResult();
+
+        $this->createQueryBuilder('user')
+            ->update()
+            ->set("user.associationId", $idAssociation)
+            ->andWhere('user.id = :idUser')
+            ->setParameter('idUser', $idUser)
+            ->getQuery()
+            ->getResult();
+
+
+
+
+        // to get just one result:
+        // $product = $query->setMaxResults(1)->getOneOrNullResult();
+    }
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

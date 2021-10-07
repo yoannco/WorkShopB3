@@ -64,6 +64,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $firstName;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $associationId;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $binome;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -252,6 +262,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getAssociationId(): ?int
+    {
+        return $this->associationId;
+    }
+
+    public function setAssociationId(?int $associationId): self
+    {
+        $this->associationId = $associationId;
+
+        return $this;
+    }
+
+    public function getBinome(): ?string
+    {
+        return $this->binome;
+    }
+
+    public function setBinome(?string $binome): self
+    {
+        $this->binome = $binome;
 
         return $this;
     }
