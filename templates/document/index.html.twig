@@ -12,16 +12,14 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
-                <th>Document</th>
+                <th>Nom document</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for document in documents %}
             <tr>
-                <td>{{ document.id }}</td>
                 <td>{{ document.title }}</td>
                 <td>{{ document.link }}</td>
                 <td>

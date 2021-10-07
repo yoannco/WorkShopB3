@@ -2,9 +2,11 @@
 
 {% block title %}Mon Compte{% endblock %}
 
-     <img src="/assets/img/BannerAdminDemandes.png" class="img-fluid" alt="Responsive image">
+{% block banniere %}
 
- {% endblock %}
+    <img src="/assets/img/BannerAdminDemandes.png" class="img-fluid" alt="Responsive image">
+
+{% endblock %}
 {% block body %}
 
     <h1>Liste utilisateurs</h1>
@@ -15,8 +17,8 @@
 
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Password</th>
                 <th>Formation</th>
+                <th>Binôme</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,7 +28,6 @@
 
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
                 <td>{{ user.formation }}</td>
                 <td>
                     {{ user.binome }}
