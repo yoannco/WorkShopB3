@@ -9,17 +9,17 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Contents</th>
-                <th>Title</th>
-                <th>actions</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
                 <td>{{ article.id }}</td>
-                <td>{{ article.contents }}</td>
                 <td>{{ article.title }}</td>
+                <td>{{ article.contents }}</td>
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">En voir plus</a>
                     <a href="{{ path('article_edit', {'id': article.id}) }}">Modifier l'article</a>

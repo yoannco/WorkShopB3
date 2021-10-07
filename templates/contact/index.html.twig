@@ -26,8 +26,8 @@
                 <td>{{ contact.user }}</td>
                 {# <td>{{ contact.type }}</td> #}
                 <td>
-                    <a href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+                    <a href="{{ path('contact_show', {'id': contact.id}) }}">En voir plus</a>
+                    {# <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a> #}
                 </td>
             </tr>
         {% else %}
@@ -38,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('contact_new') }}">Create new</a>
+    {# <a href="{{ path('contact_new') }}">Create new</a> #}
 {% endblock %}

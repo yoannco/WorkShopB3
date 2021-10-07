@@ -24,7 +24,7 @@
         <div class="form-group mx-auto text-center">
             {{ form_widget(form.ajouter, { 'label': "Ajouter", 'attr': {'class': 'btn btn-primary mx-auto text-center'}}) }}
         </div>
-    {# {{ form_end(form) }} #}
+    {{ form_end(form) }}
 
     <a href="{{ path('article_index') }}">Voir la liste des articles</a>
 </div>
