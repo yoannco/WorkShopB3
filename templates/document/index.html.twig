@@ -2,6 +2,10 @@
 
 {% block title %}Document index{% endblock %}
 
+{% block banniere %}
+<img src="/assets/img/BannerMediatheque.png" class="img-fluid" alt="Responsive image">
+{% endblock %}
+
 {% block body %}
     <h1>Document index</h1>
 
@@ -9,7 +13,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Link</th>
+                <th>Titre</th>
+                <th>Document</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -17,10 +22,11 @@
         {% for document in documents %}
             <tr>
                 <td>{{ document.id }}</td>
+                <td>{{ document.title }}</td>
                 <td>{{ document.link }}</td>
                 <td>
-                    <a href="{{ path('document_show', {'id': document.id}) }}">show</a>
-                    <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>
+                    <a href="{{ path('document_show', {'id': document.id}) }}">Voir le document</a>
+                    <a href="{{ path('document_edit', {'id': document.id}) }}">Modifier le document</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('document_new') }}">Create new</a>
+    <a href="{{ path('document_new') }}">Ajouter un nouveau document</a>
 {% endblock %}

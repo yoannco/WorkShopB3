@@ -26,56 +26,88 @@ class DocumentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="document_new", methods={"GET","POST"})
+     * @Route("/new", name="document_new")
      */
     public function new(Request $request): Response
     {
-        // $document = new Document();
-        // $form = $this->createForm(DocumentType::class, $document);
-        // // $form->handleRequest($request);
-
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($document);
-        //     $entityManager->flush();
-
-        //     return $this->redirectToRoute('document_index', [], Response::HTTP_SEE_OTHER);
-        // }
-
-        // return $this->renderForm('document/new.html.twig', [
-        //     'document' => $document,
-        //     'form' => $form,
-        // ]);
-        
         $document = new Document();
         $form = $this->createForm(DocumentType::class,$document);
        
         if ($request->isMethod('POST')) { 
             $form->handleRequest($request); 
-            // $document->setEtatDocument(0);
             if ($form->isSubmitted() && $form->isValid()) {
-                    $file = $form->get('link')->getData();
+
+                    // $string = "upload";
                     // $file = $document->getLink();
-                    $link = md5(uniqid()).'.'.$file->guessExtension();
+                    $file = $form->get('link')->getData();
+                    $fichier = md5(uniqid()).'.'.$file->guessExtension();
                     $file->move(
-                    $this->getParameter(),$link);
-                    $document->setLink($link);
+                    $this->getParameter("upload_document"),$fichier);
+                    $document->setLink($fichier);
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($document);
                 $em->flush();
                 $this->addFlash('notice', 'Document inséré');
             }
-            // return $this->redirectToRoute('document/new');
-            return $this->renderForm('document/new.html.twig', [
-                     'document' => $document,
-                     'form' => $form,
-                 ]);
+            // return $this->redirectToRoute('new');
         } 
         return $this->render('document/new.html.twig', [
         'form'=>$form->createView()
         ]);
     }
+
+    // /**
+    //  * @Route("/new", name="document_new", methods={"GET","POST"})
+    //  */
+    // public function new(Request $request): Response
+    // {
+    //     // $document = new Document();
+    //     // $form = $this->createForm(DocumentType::class, $document);
+    //     // // $form->handleRequest($request);
+
+    //     // if ($form->isSubmitted() && $form->isValid()) {
+    //     //     $entityManager = $this->getDoctrine()->getManager();
+    //     //     $entityManager->persist($document);
+    //     //     $entityManager->flush();
+
+    //     //     return $this->redirectToRoute('document_index', [], Response::HTTP_SEE_OTHER);
+    //     // }
+
+    //     // return $this->renderForm('document/new.html.twig', [
+    //     //     'document' => $document,
+    //     //     'form' => $form,
+    //     // ]);
+        
+    //     $document = new Document();
+    //     $form = $this->createForm(DocumentType::class,$document);
+       
+    //     if ($request->isMethod('POST')) { 
+    //         $form->handleRequest($request); 
+    //         // $document->setEtatDocument(0);
+    //         if ($form->isSubmitted() && $form->isValid()) {
+    //                 $file = $form->get('link')->getData();
+    //                 // $file = $document->getLink();
+    //                 $link = md5(uniqid()).'.'.$file->guessExtension();
+    //                 $file->move(
+    //                 $this->getParameter(),$link);
+    //                 $document->setLink($link);
+
+    //             $em = $this->getDoctrine()->getManager();
+    //             $em->persist($document);
+    //             $em->flush();
+    //             $this->addFlash('notice', 'Document inséré');
+    //         }
+    //         // return $this->redirectToRoute('document/new');
+    //         return $this->renderForm('document/new.html.twig', [
+    //                  'document' => $document,
+    //                  'form' => $form,
+    //              ]);
+    //     } 
+    //     return $this->render('document/new.html.twig', [
+    //     'form'=>$form->createView()
+    //     ]);
+    // }
 
     /**
      * @Route("/{id}", name="document_show", methods={"GET"})

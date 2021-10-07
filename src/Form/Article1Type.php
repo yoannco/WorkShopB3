@@ -6,6 +6,8 @@ use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class Article1Type extends AbstractType
 {
@@ -15,6 +17,7 @@ class Article1Type extends AbstractType
             ->add('contents')
             ->add('title')
             ->add('userId')
+            ->add('ajouter', SubmitType::class)
         ;
     }
 
