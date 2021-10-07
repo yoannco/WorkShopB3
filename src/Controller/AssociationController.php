@@ -28,7 +28,7 @@ class AssociationController extends AbstractController
             $userRepository->updateUserById($idAssociation, $idBeneficiary,$nameGodfather);
         }
 
-        return $this->render('user/index.html.twig', [
+        return $this->render('association/index.html.twig', [
             'godFathers' => $userRepository->findAllUserThanRole('ROLE_GODFATHER'),
             'beneficiaries' => $userRepository->findAllUserThanRole('ROLE_BENEFICIARY'),
             'users' => $users
