@@ -7,10 +7,19 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="assets/img/BannerContact.png" class="d-block w-100" href="Contact" alt="...">
+            <img src="assets/img/BannerContact.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="assets/img/BannerGestionEquipe.png" class="d-block w-100" href="#" alt="...">
+            <img src="assets/img/BannerGestionEquipe.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/img/BannerAccueil.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/img/BannerAdminDemandes.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/img/BannerMediatheque.png" class="d-block w-100" href="#" alt="...">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -28,11 +37,51 @@
 {% block citation %}
     <figure class="text-center">
         <blockquote class="blockquote">
-            <p class="mb-0">HandiStanciel l'accompagnement en milieu professionelle</p>
+            <p class="mb-0">HandiStanciel l'accompagnement en milieu professionel</p>
 
         </blockquote>
         <figcaption class="blockquote-footer">
             Someone famous in <cite title="Source Title">Source Title</cite>
         </figcaption>
     </figure>
+{% endblock %}
+
+{% block grandeCard %}
+<div class="card text-center">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+        2 days ago
+    </div>
+</div>
+    <br>
+{% endblock %}
+
+{% block petiteCard %}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
