@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class ContactType extends AbstractType
@@ -21,6 +22,8 @@ class ContactType extends AbstractType
             ->add('type', EntityType::class,
             array( 'class' => 'App\Entity\Type',
             'choice_label' => 'id'))
+            ->add('ajouter', SubmitType::class)
+
         ;
     }
 

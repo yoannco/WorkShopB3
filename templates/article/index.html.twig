@@ -21,8 +21,8 @@
                 <td>{{ article.contents }}</td>
                 <td>{{ article.title }}</td>
                 <td>
-                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('article_show', {'id': article.id}) }}">En voir plus</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}">Modifier l'article</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('article_new') }}">Create new</a>
+    <a href="{{ path('article_new') }}">Créer un nouvel article</a>
 {% endblock %}
