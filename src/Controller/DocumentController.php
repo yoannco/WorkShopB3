@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Document;
 use App\Form\DocumentType;
 use App\Repository\DocumentRepository;
+use App\Repository\UserRepository;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +20,19 @@ class DocumentController extends AbstractController
     /**
      * @Route("/", name="document_index", methods={"GET"})
      */
-    public function index(DocumentRepository $documentRepository): Response
+    public function index(DocumentRepository $documentRepository, UserRepository $userRepository): Response
     {
+        $userDocument = [];
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $identifier = $user->getUserIdentifier();
+        $thisUser = $userRepository->findOneBy(array('email' => $identifier));
+        if (count( explode(' ',trim($thisUser->getBinome()))) == 2){
+            $binomeUser = $userRepository->findOneBy(array('name' => explode(' ',trim($thisUser->getBinome()))[0], 'firstName' => explode(' ',trim($thisUser->getBinome()))[1]));
+            $userDocument = $documentRepository->findAllUserDocument($thisUser->getId(), $binomeUser->getId());
+        }
         return $this->render('document/index.html.twig', [
-            'documents' => $documentRepository->findAll(),
+            'documents' => $userDocument,
         ]);
     }
 
@@ -31,6 +42,8 @@ class DocumentController extends AbstractController
     public function new(Request $request): Response
     {
         $document = new Document();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $document->setUserId( $user);
         $form = $this->createForm(DocumentType::class,$document);
        
         if ($request->isMethod('POST')) { 

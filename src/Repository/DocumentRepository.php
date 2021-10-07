@@ -19,6 +19,23 @@ class DocumentRepository extends ServiceEntityRepository
         parent::__construct($registry, Document::class);
     }
 
+    public function findAllUserDocument(int $thisUser, int $idBinome)
+    {
+        // automatically knows to select Products
+        // the "p" is an alias you'll use in the rest of the query
+
+
+        return $this->createQueryBuilder('document')
+            ->andWhere("document.UserId = :binome or document.UserId = :thisUser")
+            ->setParameter('binome', $idBinome)
+            ->setParameter('thisUser', $thisUser)
+            ->getQuery()
+            ->getResult();
+
+        // to get just one result:
+        // $product = $query->setMaxResults(1)->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Document[] Returns an array of Document objects
     //  */

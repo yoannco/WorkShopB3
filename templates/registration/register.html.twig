@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Inscription</h1>
-
+    <br>
     {{ form_start(registrationForm) }}
 
     {{ form_row(registrationForm.name) }}
@@ -15,7 +15,6 @@
         label: 'Password'
     }) }}
     {{ form_row(registrationForm.agreeTerms) }}
-
-    <button type="submit" class="btn">Register</button>
+    <button type="submit" class="btn btn-success">Inscription</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

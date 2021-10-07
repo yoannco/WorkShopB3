@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello AssociationController!{% endblock %}
+ {% block banniere %}
 
+     <img src="/assets/img/BannerAdminDemandes.png" class="img-fluid" alt="Responsive image">
+
+ {% endblock %}
 {% block body %}
-    <img src="assets/img/BannerAccueil.png" class="img-fluid" alt="Responsive image">
+
 
     <h1>Attribution parrain</h1>
 
@@ -72,6 +76,6 @@
             </tbody>
         </table>
     </div>
-    <button class="btn">Attribution</button>
+    <button class="btn btn-dark">Attribution</button>
 </form>
 {% endblock %}

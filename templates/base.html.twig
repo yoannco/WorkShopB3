@@ -8,26 +8,37 @@
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
-        {#{{ encore_entry_link_tags('app') }}#}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://bootswatch.com/5/simplex/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {# {{ encore_entry_link_tags('app') }} #}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://bootswatch.com/5/simplex/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
         <link rel="stylesheet" href="public/assets/css/workshopb3.css">
     {% endblock %}
 
     {% block javascripts %}
-        {#{{ encore_entry_script_tags('app') }}#}
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        {# {{ encore_entry_script_tags('app') }} #}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
 
     {% endblock %}
 </head>
 <body>
-
+{% if is_granted('ROLE_USER') %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <div class="container">
         <a class="navbar-brand" href="{{ path('index') }}">HandiStanciel</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -41,10 +52,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('contact_new') }}">Contact</a>
                 </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('user_index') }}">Liste utilisateurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('create_association') }}">Binôme</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+{% endif %}
 
 {% block banniere %}
 {% endblock %}
@@ -53,16 +76,17 @@
 {% endblock %}
 
 <div class="container mt-5" style="margin-top:10px; padding-top:20px;">
-{% block body %}
+    {% block body %}
 
-    {% block grandeCard %}
+        {% block grandeCard %}
+        {% endblock %}
+
+        {% block petiteCard %}
+        {% endblock %}
+
     {% endblock %}
-
-    {% block petiteCard %}
-    {% endblock %}
-
-{% endblock %}
 </div>
-
+<br>
+<br>
 </body>
 </html>
