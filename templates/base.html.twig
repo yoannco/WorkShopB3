@@ -24,42 +24,44 @@
 </head>
 <body>
 {% if is_granted('ROLE_USER') %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <div class="container">
-        <a class="navbar-brand" href="{{ path('index') }}">HandiStanciel</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('article_index') }}">Articles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('document_index') }}">Documents</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('contact_new') }}">Contact</a>
-                </li>
-                {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('user_index') }}">Liste utilisateurs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('create_association') }}">Binôme</a>
-                </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-sm-2" type="text" placeholder="Recherche">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
-            </form>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <img src="/assets/img/HandiStancielSansTxt.png" class="d-inline-block align-top" alt="">
+            <a class="navbar-brand" href="{{ path('index') }}">HandiStanciel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('article_index') }}">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('document_index') }}">Documents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('contact_new') }}">Contact</a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('user_index') }}">Liste utilisateurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('create_association') }}">Binôme</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
+                </form>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 {% endif %}
 
 {% block banniere %}
