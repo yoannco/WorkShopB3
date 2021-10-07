@@ -10,8 +10,7 @@
     {% block stylesheets %}
         {#{{ encore_entry_link_tags('app') }}#}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://bootswatch.com/5/simplex/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="public/assets/css/workshopb3.css">
+        <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
     {% endblock %}
 
     {% block javascripts %}
@@ -23,15 +22,16 @@
     {% endblock %}
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <div class="container">
-        <a class="navbar-brand" href="{{ path('index') }}">HandiStanciel</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <img src="/assets/img/HandiStancielSansTxt.png" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="#">HandiStanciel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('article_index') }}">Articles</a>
                 </li>
@@ -42,9 +42,39 @@
                     <a class="nav-link" href="{{ path('contact_new') }}">Contact</a>
                 </li>
             </ul>
+            <form class="d-flex">
+                <input class="form-control me-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
+            </form>
         </div>
     </div>
 </nav>
+{#
+<!-- comment
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarcolor01" aria-controls="navbarcolor01" aria-expanded="false" aria-label="toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarresponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('article_index') }}">articles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('document_index') }}">documents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('contact_new') }}">contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+-->#}
+
 
 {% block banniere %}
 {% endblock %}
