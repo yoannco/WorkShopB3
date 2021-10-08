@@ -16,7 +16,7 @@ class Article1Type extends AbstractType
         $builder
             ->add('contents')
             ->add('title')
-            ->add('userId')
+            // ->add('userId')
             ->add('ajouter', SubmitType::class)
         ;
     }

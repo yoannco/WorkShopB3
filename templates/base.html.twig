@@ -45,13 +45,13 @@
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ path('contact_index') }}">Liste des signalements</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ path('user_index') }}">Liste utilisateurs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('create_association') }}">Binôme</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('contact_index') }}">Liste des signalements</a>
                         </li>
                     {% endif %}
                     <li class="nav-item">
@@ -59,8 +59,8 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
+                    <input class="form-control me-sm-2" type="text" placeholder="Recherche">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
                 </form>
             </div>
         </div>

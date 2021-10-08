@@ -21,7 +21,7 @@ class ContactType extends AbstractType
             // ->add('type')
             ->add('type', EntityType::class,
             array( 'class' => 'App\Entity\Type',
-            'choice_label' => 'id'))
+            'choice_label' => 'libelle'))
             ->add('ajouter', SubmitType::class)
 
         ;

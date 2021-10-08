@@ -18,9 +18,9 @@ class ArticleType extends AbstractType
         $builder
             ->add('contents', TextareaType::class)
             ->add('title', TextType::class)
-            ->add('userId', EntityType::class,
-            array( 'class' => 'App\Entity\User',
-            'choice_label' => 'id'))
+            // ->add('userId', EntityType::class,
+            // array( 'class' => 'App\Entity\User',
+            // 'choice_label' => 'id'))
             ->add('ajouter', SubmitType::class)
         ;
     }
